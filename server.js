@@ -13,7 +13,6 @@ app.use(cors({ origin: "https://movie-test-frontend.vercel.app/" }));
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
-app.use("/api/movies", movieRoutes);
 app.use("/api", movieRoutes);
 
 const PORT = process.env.PORT || 5000;
