@@ -18,10 +18,7 @@
     {
       "src": "/api/favourites/(.*)",
       "dest": "routes/favouriteRoutes.js"
-    },
-    {
-      "src": "/api/movies/(.*)",
-      "dest": "routes/movieRoutes.js"
     }
+   
   ]
 }
