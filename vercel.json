@@ -1,10 +1,27 @@
 {
-    "version": 2,
-    "builds": [
-      { "src": "api/**/*.js", "use": "@vercel/node" }
-    ],
-    "routes": [
-      { "src": "/api/(.*)", "dest": "/api/$1" }
-    ]
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "routes/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/auth/(.*)",
+      "dest": "routes/authRoutes.js"
+    },
+    {
+      "src": "/api/favourites/(.*)",
+      "dest": "routes/favouriteRoutes.js"
+    },
+    {
+      "src": "/api/movies/(.*)",
+      "dest": "routes/movieRoutes.js"
+    }
+  ]
+}
