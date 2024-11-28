@@ -9,7 +9,7 @@ const movieRoutes = require("./routes/movieRoutes");
 const favourites = require("./routes/favouriteRoutes");
 const app = express();
 connectDB();
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: "https://movie-test-frontend.vercel.app/" }));
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
