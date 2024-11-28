@@ -59,11 +59,29 @@ exports.addFavourite = async (req, res) => {
     res.status(500).json({ message: "Error adding favourite", error });
   }
 };
+// exports.getFavourites = async (req, res) => {
+//   const { userId } = req.params; // User ID passed as a route parameter
+
+//   try {
+//     // Find the user by ID and select only the favourites field
+//     const user = await User.findById(userId).select("favourites");
+
+//     if (!user) {
+//       return res.status(404).json({ message: "User not found" });
+//     }
+
+//     res.status(200).json({
+//       message: "Favourites fetched successfully",
+//       favourites: user.favourites,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ message: "Error fetching favourites", error });
+//   }
+// };
 exports.getFavourites = async (req, res) => {
-  const { userId } = req.params; // User ID passed as a route parameter
+  const { userId } = req.params;
 
   try {
-    // Find the user by ID and select only the favourites field
     const user = await User.findById(userId).select("favourites");
 
     if (!user) {
@@ -75,6 +93,7 @@ exports.getFavourites = async (req, res) => {
       favourites: user.favourites,
     });
   } catch (error) {
+    console.error("Error fetching favourites:", error); // Log error details
     res.status(500).json({ message: "Error fetching favourites", error });
   }
 };

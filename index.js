@@ -8,7 +8,22 @@ const authRoutes = require("./routes/authRoutes");
 const favourites = require("./routes/favouriteRoutes");
 const app = express();
 connectDB();
-app.use(cors({ origin: "https://movie-test-frontend.vercel.app/" }));
+const allowedOrigins = [
+  "https://movie-test-frontend.vercel.app", // Deployed frontend
+  "http://localhost:3000", // Local development
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
